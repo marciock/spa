@@ -6,37 +6,54 @@ export class HomePage extends HTMLElement{
         
     }
     connectedCallback(){
+        
+
         let template=`
         <div class="container" >
             <h3 >Home</h3>
-            <icons-menu ></icons-menu>
-         </div>
-        `
+            <div class="row">
+           
+            ${this.data()}
+               
+            </div>
+        </div>
+        `;
 
+           
         this.innerHTML=template;
 
-
+        console.log(this.data())
 
     }
     data(){
-        data=[
+      const data=[
             {
                 img:'./assets/img/imagens.svg',
                 text:'Usuários',
-                link:'/usuarios'
+                link:'#/usuarios'
             },
             {
                 img:'./assets/img/produtos.svg',
                 text:'Produtos',
-                link:'/produtos'
+                link:'#/produtos'
             },
             {
-                img:'./assets/img/marcas.svg',
+                img:'./assets/img/marca.svg',
                 text:'Marcas',
-                link:'/marcas'
+                link:'#/marcas'
             }
         ];
 
-        ForMe(data)
+        let icon ='';
+        data.map((f)=>{
+            icon +=     
+            ` <div class="col-sm- ml-2" > 
+                     <icons-menu img="${f.img}" text="${f.text}" link="${f.link}" ></icons-menu>
+            </div>`;
+
+        }).join('');
+        console.log(icon)
+        return icon;
+       
     }
 }

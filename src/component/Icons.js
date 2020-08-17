@@ -5,24 +5,24 @@ export class Icons extends HTMLElement{
 
     }
     connectedCallback(){
-        const row=document.createElement('div');
-        row.classList.add('row');
+        const div=document.createElement('div');
+            const img=this.getAttribute('img');
+            const text=this.getAttribute('text');
+            const link=this.getAttribute('link')
 
             let template=`
-
-                <div class="col-sm-"  for-me>
-                 <img  id="image-icon"  bind-me="img"/>
-                 <h4 id="text-icon" class="text-center" bind-me="text"></h4>
-                </div>
-
-            
+                <a href="${link}" class="text-center">
+                     <img src="${img}" style="width:10em; height:10em"/>
+                     <h4  >${text}</h4>
+                </a>
+                     
             `
-            row.innerHTML=template;
+            div.innerHTML=template;
             
 
             
 
-            this.appendChild(row);
+            this.appendChild(div);
     }
 }
 
